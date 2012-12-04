@@ -13,34 +13,3 @@ Include the plugin script
 ``` js
 $("#content").linkify();
 ```
-  
-or to enable the hashtag link
-
-``` js
-function toHashtagUrl(hashtag) {
-  return "http://myservice.com?q=" + hashtag;
-}
-
-$("#content-with-hashtag").linkify(toHashtagUrl);
-```
-
-or if you want to disable the URL that does't include http
-
-``` js
-function toHashtagUrl(hashtag) {
-  return "http://myservice.com?q=" + hashtag;
-}
-
-$("#content-with-hashtag").linkify({
-	hashtagUrlBuilder: toHashtagUrl, 
-	includeW3: false
-});
-```
-
-or to specify the target for links
-
-``` js
-$("#content").linkify({
-	target: "_blank"
-});
-```
