@@ -11,7 +11,7 @@ function recursiveLinkify(element) {
             if (element.nodeType == document.TEXT_NODE) {
                 return replaceURLWithHTMLLinks(element.textContent);
             }
-            element = $(element)
+            element = $(element);
             if (element.prop("tagName") != "A") {
                 element.html(recursiveLinkify(element));
             }
