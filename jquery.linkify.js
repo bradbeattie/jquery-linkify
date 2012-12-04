@@ -13,10 +13,9 @@ function recursiveLinkify(element) {
             }
             element = $(element)
             if (element.prop("tagName") != "A") {
-                return recursiveLinkify(element);
-            } else {
-                return element[0].outerHTML;
+                element.html(recursiveLinkify(element));
             }
+            return element[0].outerHTML;
         }
     );
     return response.join("");
