@@ -5,27 +5,23 @@ function replaceURLWithHTMLLinks(text) {
 }
 
 function recursiveLinkify(element) {
-    var response = $.map(
+    $.each(
         element.contents(),
-        function(element, i) {
-            if (element.nodeType == document.TEXT_NODE) {
-                return replaceURLWithHTMLLinks(element.textContent);
-            }
+        function(index, element) {
             element = $(element);
-            if (element.prop("tagName") != "A") {
-                element.html(recursiveLinkify(element));
+            if (element.get(0).nodeType == document.TEXT_NODE) {
+                element.replaceWith(replaceURLWithHTMLLinks(element.text()));
+            } else if (element.prop("tagName") != "A") {
+                recursiveLinkify(element);
             }
-            return element[0].outerHTML;
         }
     );
-    return response.join("");
 }
 
 (function($) {
     $.fn.linkify = function(opts) {
         return this.each(function() {
-            var element = $(this);
-            element.html(recursiveLinkify(element));
+            recursiveLinkify($(this));
         });
     }
 })(jQuery);
