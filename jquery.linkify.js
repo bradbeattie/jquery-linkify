@@ -9,15 +9,15 @@ function recursiveLinkify(element) {
         function(element, i) {
             if (element.nodeType == document.TEXT_NODE) {
                 return replaceURLWithHTMLLinks(element.textContent);
-            }   
+            }
             element = $(element)
             if (element.prop("tagName") != "A") {
                 return recursiveLinkify(element);
             } else {
                 return element[0].outerHTML;
-            }   
-        }   
-    );  
+            }
+        }
+    );
     return response.join("");
 }
 
@@ -26,6 +26,6 @@ function recursiveLinkify(element) {
         return this.each(function() {
             var element = $(this);
             element.html(recursiveLinkify(element));
-        }); 
-    }   
+        });
+    }
 })(jQuery);
