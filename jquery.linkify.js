@@ -1,6 +1,6 @@
-// Regex from http://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links/37687#37687
+// Regex from http://daringfireball.net/2010/07/improved_regex_for_matching_urls
 function replaceURLWithHTMLLinks(text) {
-    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    var exp = /\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/ig;
     return text.replace(exp,"<a href='$1'>$1</a>");
 }
 
