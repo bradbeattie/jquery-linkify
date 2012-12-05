@@ -11,7 +11,7 @@ function recursiveLinkify(element) {
             element = $(element);
             if (element.get(0).nodeType == document.TEXT_NODE) {
                 element.replaceWith(replaceURLWithHTMLLinks(element.text()));
-            } else if (element.prop("tagName") != "A") {
+            } else if (element.prop("tagName") != "A" && element.prop("tagName") != "BUTTON") {
                 recursiveLinkify(element);
             }
         }
