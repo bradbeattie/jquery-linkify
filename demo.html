@@ -13,6 +13,7 @@
             3: <strong>http://google.com#foobar</strong>
             4: <a href="http://google.com">Google</a>.
             5: <a href="http://google.com">http://google.com</a>.
+            6: (http://google.com#foobar)
         </div>
         <h2>Desired</h2>
         <div id="desired">
@@ -21,10 +22,14 @@
             3: <strong><a href="http://google.com#foobar">http://google.com#foobar</a></strong>
             4: <a href="http://google.com">Google</a>.
             5: <a href="http://google.com">http://google.com</a>.
+            6: (<a href="http://google.com#foobar">http://google.com#foobar</a>)
         </div>
     </body>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="jquery.linkify.js"></script>
-    <script>$("#source").linkify();</script>
-    <script>$("#source").linkify();</script>
+    <script>
+        $("#source").linkify();
+        $("#source").linkify();
+        $("body").css("background", $("#source").html() == $("#desired").html() ? "#cfc" : "#fcc");
+    </script>
 </html>
