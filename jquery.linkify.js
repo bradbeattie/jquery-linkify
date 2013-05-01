@@ -30,8 +30,8 @@ function recursiveLinkify(element, match, replacer) {
             }
             recursiveLinkify($(this), matchURLs, replaceURLs);
 
-            // Rough guess at an email regex
-            var matchEmails = /\b([^\s]+@[^\s]+\.[^\s]+)/ig;
+            // Regex from http://www.regular-expressions.info/email.html
+            var matchEmails = /\b[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/ig;
             var replaceEmails = function(str) {
                 return "<a href='mailto:"+str+"'>"+str+"</a>";
             }
