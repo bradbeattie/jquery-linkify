@@ -8,7 +8,7 @@ function recursiveLinkify(element, match, replacer) {
 
             // Replace it's content if it's a text node
             if (element.get(0).nodeType == document.TEXT_NODE) {
-                element.after(element.text().replace(match, replacer)).remove();
+                element.after($("<div />").text(element.text()).html().replace(match, replacer)).remove();
             }
 
             // Or recurse down into it if it's not an anchor or a button
