@@ -19,6 +19,8 @@
             <a href="http://www.google.com">www.google.com</a>
             <a href="mailto:text@example.com">text@example.com</a>
             <a href="mailto:text@example.com">text@example.com</a>.
+            &lt;<a href="mailto:text@example.com">text@example.com</a>&gt;
+            &lt;<a href="mailto:text@example.com">text@example.com</a>&gt;.
         </div>
         <h2>Attempt</h2>
         <div id="attempt">
@@ -33,13 +35,24 @@
             www.google.com
             text@example.com
             text@example.com.
+            &lt;text@example.com&gt;
+            &lt;text@example.com&gt;.
         </div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="jquery.linkify.js"></script>
     <script>
-        $("#attempt").linkify();
-        $("#attempt").linkify();
-        $("body").css("background", $("#attempt").html() == $("#desired").html() ? "#cfc" : "#fcc");
+        try {
+            for (var i=1; i<5; i++) {
+                $("#attempt").linkify();
+                if ($("#attempt").html() != $("#desired").html()) {
+                    throw "Failed on pass #" + i;
+                }
+            }
+            $("body").css("background", "#cfc");
+        } catch (err) {
+            console.log(err);
+            $("body").css("background", "#fcc");
+        }
     </script>
 </html>
