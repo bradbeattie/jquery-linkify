@@ -59,7 +59,7 @@ function htmlEncode(text) {
             recursiveLinkify($(this), matchEmails, replaceEmails, groupCount);
 
             // Simple URLs that weren't otherwise caught by the above
-            var matchURLs = /\b([a-z]+.(com|org|net|ca|gov)\b)/ig;
+            var matchURLs = /\b([a-z]+\.(com|org|net|ca|gov)\b)/ig;
             var groupCount = "-- example.com --".split(matchURLs).length - 2;
             var replaceURLs = function(str) {
                 return "<a href='"+(str.indexOf("://") === -1 ? "http://" : "")+str+"'>"+str+"</a>";
