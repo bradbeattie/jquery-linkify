@@ -59,12 +59,12 @@ function htmlEncode(text) {
             recursiveLinkify($(this), matchEmails, replaceEmails, groupCount);
 
             // Simple URLs that weren't otherwise caught by the above
-            var matchURLs = /\b([a-z]+\.(com|org|net|ca|gov)(?![\w-.]))/ig;
-            var groupCount = "-- example.com --".split(matchURLs).length - 2;
-            var replaceURLs = function(str) {
+            var matchDomains = /\b([a-z0-9.\-]+[.][a-z]{2,4})\b/ig;
+            var groupCount = "-- example.com --".split(matchDomains).length - 2;
+            var replaceDomains = function(str) {
                 return "<a href='"+(str.indexOf("://") === -1 ? "http://" : "")+str+"'>"+str+"</a>";
             }
-            recursiveLinkify($(this), matchURLs, replaceURLs, groupCount);
+            recursiveLinkify($(this), matchDomains, replaceDomains, groupCount);
         });
     }
 })(jQuery);
