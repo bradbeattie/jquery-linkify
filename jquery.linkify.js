@@ -25,7 +25,7 @@ function recursiveLinkify(element, match, replacer, groupCount) {
             }
 
             // Or recurse down into it if it's not an anchor or a button
-            else if (element.prop("tagName") != "A" && element.prop("tagName") != "BUTTON") {
+            else if (["A", "BUTTON", "TEXTAREA"].indexOf(element.prop("tagName")) === -1) {
                 recursiveLinkify(element, match, replacer, groupCount);
             }
         }
